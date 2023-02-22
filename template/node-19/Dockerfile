@@ -37,7 +37,7 @@ COPY --chown=runner:runner index.js .
 
 # Install function dependencies in a separate layer to allow caching
 WORKDIR /home/runner/function
-COPY --chown=runner:runner function/*.json .
+COPY --chown=runner:runner function/*.json ./
 RUN npm install
 
 # Copy the function
