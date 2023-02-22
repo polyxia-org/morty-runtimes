@@ -6,6 +6,8 @@ ARG ADDITIONAL_PACKAGE
 
 RUN apk --no-cache add curl ca-certificates openrc util-linux ${ADDITIONAL_PACKAGE} && \
     addgroup -S runner && adduser -S -g runner runner
+    
+RUN echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 # Get Alpha and make it executable in the final build image
 COPY --from=get-alpha /openrc.sh /etc/init.d/alpha
