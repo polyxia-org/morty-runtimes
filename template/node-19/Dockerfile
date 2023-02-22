@@ -1,10 +1,10 @@
 FROM --platform=${TARGETPLATFORM:-linux/amd64} ghcr.io/polyxia-org/alpha:v0.2.1 as get-alpha
-FROM --platform=${TARGETPLATFORM:-linux/amd64} node:19-alpine
+FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3.17.2
 
 ARG TARGETPLATFORM
 ARG ADDITIONAL_PACKAGE
 
-RUN apk --no-cache add curl ca-certificates openrc util-linux ${ADDITIONAL_PACKAGE} && \
+RUN apk --no-cache add nodejs npm curl ca-certificates openrc util-linux ${ADDITIONAL_PACKAGE} && \
     addgroup -S runner && adduser -S -g runner runner
 
 # Get Alpha and make it executable in the final build image
