@@ -21,7 +21,7 @@ RUN echo "root:root" | chpasswd
 
 # Make alpha start on boot
 RUN rc-update add alpha default
-RUN echo 'export ALPHA_INVOKE="node /home/runner/index.js"' >> /etc/conf.d/alpha
+RUN echo 'export ALPHA_PROCESS_COMMAND="node /home/runner/index.js"' >> /etc/conf.d/alpha
 
 USER runner
 
