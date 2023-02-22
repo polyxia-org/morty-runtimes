@@ -11,6 +11,4 @@ app.all("/*", async (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`Node ${process.version} is listening on 0.0.0.0:${port}`);
-});
+app.listen(port);
