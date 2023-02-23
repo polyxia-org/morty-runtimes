@@ -3,10 +3,6 @@ FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.19-alpine as build
 
 ARG TARGETPLATFORM
 
-# Get Alpha and make it executable in the final build image
-COPY --from=get-alpha /alpha /usr/bin/alpha
-RUN chmod +x /usr/bin/alpha
-
 RUN apk --no-cache add git
 
 RUN mkdir -p /go/src/handler
@@ -37,7 +33,10 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
+# Get Alpha and make it executable in the final build image
+COPY --from=get-alpha /alpha /usr/bin/alpha
+RUN chmod +x /usr/bin/alpha
+
 COPY --from=build /go/src/handler/handler .
-COPY --from=build /usr/bin/alpha .
 
 WORKDIR /
