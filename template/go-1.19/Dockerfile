@@ -39,4 +39,7 @@ RUN chmod +x /usr/bin/alpha
 
 COPY --from=build /go/src/handler/handler .
 
+# Mandatory, will be used by Alpha
+RUN echo "export ALPHA_PROCESS_COMMAND=/app/handler" >> /app/env.sh
+
 WORKDIR /

@@ -28,4 +28,7 @@ RUN npm install
 # Copy the function
 COPY function/ .
 
+# Mandatory, will be used by Alpha
+RUN echo 'export ALPHA_PROCESS_COMMAND="/usr/local/bin/node /app/index.js"' >> /app/env.sh
+
 WORKDIR /
