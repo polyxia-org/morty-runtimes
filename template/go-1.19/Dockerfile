@@ -1,5 +1,5 @@
 FROM --platform=${TARGETPLATFORM:-linux/amd64} ghcr.io/polyxia-org/alpha:v0.2.2 as get-alpha
-FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.19-alpine as build
+FROM --platform=${TARGETPLATFORM:-linux/amd64} golang:1.19-alpine as build
 
 ARG TARGETPLATFORM
 
